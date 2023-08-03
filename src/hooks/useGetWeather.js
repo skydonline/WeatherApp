@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { View, ActivityIndicator, StyleSheet } from "react-native";
-import Tabs from "./src/components/Tabs";
-import { NavigationContainer } from "@react-navigation/native";
 import * as Location from "expo-location";
 import { WEATHER_API_KEY } from "@env";
-import { useGetWeather } from "./src/hooks/useGetWeather";
 
-export default function App() {
+export const useGetWeather = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [weather, setWeather] = useState([]);
@@ -40,29 +36,5 @@ export default function App() {
             await fetchWeatherData();
         })();
     }, [lat, lon]);
-
-    if (weather) {
-        console.log(weather);
-    }
-
-    if (loading) {
-        return (
-            <View style={styles.container}>
-                <ActivityIndicator size={"large"} color={"lightblue"} />
-            </View>
-        );
-    }
-
-    return (
-        <NavigationContainer>
-            <Tabs />
-        </NavigationContainer>
-    );
-}
-
-const styles = StyleSheet.create({
-    container: {
-        justifyContent: "center",
-        flex: 1,
-    },
-});
+    return [loading, error, weather];
+};
