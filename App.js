@@ -10,7 +10,7 @@ export default function App() {
     const [loading, error, weather] = useGetWeather();
     console.log(loading, error, weather);
 
-    if (weather) {
+    if (weather && weather.current) {
         return (
             <NavigationContainer>
                 <Tabs weather={weather} />

@@ -4,11 +4,11 @@ import { Feather } from "@expo/vector-icons";
 import RowText from "../components/RowText";
 import { weatherType } from "../utilities/weatherType";
 
-export default function CurrentWeather() {
+export default function CurrentWeather({ weatherData }) {
     const {
         wrapper,
         container,
-        temp,
+        tempStyles,
         feels,
         highLowWrapper,
         highLow,
@@ -16,12 +16,23 @@ export default function CurrentWeather() {
         description,
         message,
     } = styles;
+    const {
+        0: {
+            date,
+            day: {
+                avgtemp_c,
+                maxtemp_c,
+                mintemp_c,
+                condition: { text },
+            },
+        },
+    } = weatherData;
 
     return (
         <SafeAreaView style={wrapper}>
             <View style={container}>
                 <Feather name="sun" size={100} color="black" />
-                <Text style={temp}>6</Text>
+                <Text style={tempStyles}>6</Text>
                 <Text style={feels}>Feels like 5</Text>
                 <RowText
                     containerStyles={highLowWrapper}
@@ -52,7 +63,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
-    temp: {
+    tempStyles: {
         color: "black",
         fontSize: 48,
     },
