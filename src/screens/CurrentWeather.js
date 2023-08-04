@@ -17,35 +17,37 @@ export default function CurrentWeather({ weatherData }) {
         message,
     } = styles;
     const {
-        0: {
-            date,
-            day: {
-                avgtemp_c,
-                maxtemp_c,
-                mintemp_c,
-                condition: { text },
-            },
+        date,
+        day: {
+            avgtemp_c,
+            maxtemp_c,
+            mintemp_c,
+            condition: { text },
         },
-    } = weatherData;
+    } = weatherData[0];
+
+    const weatherCondition = text;
 
     return (
-        <SafeAreaView style={wrapper}>
+        <SafeAreaView
+            style={[wrapper, { backgroundColor: weatherType[weatherCondition].backgroundColor }]}
+        >
             <View style={container}>
-                <Feather name="sun" size={100} color="black" />
-                <Text style={tempStyles}>6</Text>
+                <Feather name={weatherType[weatherCondition].icon} size={100} color="white" />
+                <Text style={tempStyles}>{avgtemp_c}</Text>
                 <Text style={feels}>Feels like 5</Text>
                 <RowText
                     containerStyles={highLowWrapper}
-                    message1={"High: 8"}
-                    message2={"Low: 6"}
+                    message1={`High: ${maxtemp_c}`}
+                    message2={`High: ${mintemp_c}`}
                     message1Styles={highLow}
                     message2Styles={highLow}
                 />
             </View>
             <RowText
                 containerStyles={bodyWrapper}
-                message1={"It's sunny"}
-                message2={weatherType["Clear"].message}
+                message1={weatherCondition}
+                message2={weatherType[weatherCondition].message}
                 message1Styles={description}
                 message2Styles={message}
             />

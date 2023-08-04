@@ -38,13 +38,14 @@ export default function Tabs({ weather }) {
             </Tab.Screen>
             <Tab.Screen
                 name={"Upcoming"}
-                component={UpcomingWeather}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Feather name={"clock"} size={25} color={focused ? "blue" : "black"} />
                     ),
                 }}
-            />
+            >
+                {() => <UpcomingWeather weatherData={weather.forecast.forecastday} />}
+            </Tab.Screen>
             <Tab.Screen
                 name={"City"}
                 component={City}
