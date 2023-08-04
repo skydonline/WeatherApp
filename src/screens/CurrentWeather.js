@@ -34,12 +34,12 @@ export default function CurrentWeather({ weatherData }) {
         >
             <View style={container}>
                 <Feather name={weatherType[weatherCondition].icon} size={100} color="white" />
-                <Text style={tempStyles}>{avgtemp_c}</Text>
-                <Text style={feels}>Feels like 5</Text>
+                <Text style={tempStyles}>{`${avgtemp_c}°`}</Text>
+                <Text style={feels}>Feels like 5°</Text>
                 <RowText
                     containerStyles={highLowWrapper}
-                    message1={`High: ${maxtemp_c}`}
-                    message2={`High: ${mintemp_c}`}
+                    message1={`High: ${maxtemp_c}° `}
+                    message2={`High: ${mintemp_c}°`}
                     message1Styles={highLow}
                     message2Styles={highLow}
                 />
@@ -58,7 +58,6 @@ export default function CurrentWeather({ weatherData }) {
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        backgroundColor: "pink",
     },
     container: {
         flex: 1,
@@ -87,9 +86,9 @@ const styles = StyleSheet.create({
         marginBottom: 40,
     },
     description: {
-        fontSize: 48,
+        fontSize: 43,
     },
     message: {
-        fontSize: 30,
+        fontSize: 25,
     },
 });

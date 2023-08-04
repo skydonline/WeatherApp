@@ -1,13 +1,5 @@
 import React from "react";
-import {
-    StyleSheet,
-    Text,
-    View,
-    SafeAreaView,
-    FlatList,
-    StatusBar,
-    ImageBackground,
-} from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { weatherType } from "../utilities/weatherType";
 import moment from "moment";
@@ -37,7 +29,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-around",
         alignItems: "center",
         borderWidth: 5,
-        backgroundColor: "pink",
+        backgroundColor: "indianred",
     },
     temp: {
         color: "white",

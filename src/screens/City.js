@@ -36,7 +36,7 @@ export default function City({ weatherData }) {
                     <IconText
                         iconName={"user"}
                         iconColor={"red"}
-                        bodyText={localtime_epoch}
+                        bodyText={`Population: ${localtime_epoch}`}
                         bodyTextStyles={populationText}
                     />
                 </View>
