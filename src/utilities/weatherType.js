@@ -44,4 +44,9 @@ export const weatherType = {
         message: "There is currently patchy rain.",
         backgroundColor: "#58586E",
     },
+    "Partly cloudy": {
+        icon: "cloud",
+        message: "There are some clouds.",
+        backgroundColor: "#58586E",
+    },
 };
